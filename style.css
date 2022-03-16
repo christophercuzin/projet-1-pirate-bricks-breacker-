@@ -1,27 +1,222 @@
-* { padding: 0; margin: 0; }
-canvas { 
-    background: rgb(99, 98, 98);
-    display: block; 
-    margin: 0 auto;
-    width: 100vw;
-    height: 65vh; 
-} 
-header{
-    height: 5vh;
-    background-color: black;
-}
-footer{
-    height: 30vh;
-    width: 100%;
-    background-color: black;
-    position: fixed;
-    bottom: 0;
-    
+* {
+  /*font-size: 16px;*/
+  padding: 0;
+  margin: 0;
 }
 
+header {
+  position: sticky;
+  height: 3rem;
+  width: 100vw;
+  background-color: black;
+  display: flex;
+}
+
+.logo {
+  height: 90%;
+  width:auto;
+}
+
+.gameName {
+  color: white;
+  display: flex;
+  align-items: center;
+  padding-left: 1em;
+}
+
+.gameName h1 {
+  font-size: 1.5em;
+}
+
+ ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items:center;
+}
+
+.mainContent{
+  width: 100Vw;
+}
+
+.containerGames {
+  width: 100vw;
+  height: 26em;
+}
+
+#screenGame {
+  display: block; 
+  margin: 0 auto;
+  background-image: url("/images/background/underwater-fantasy-preview.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 26em;
+  width: 100Vw;
+
+}
+
+/*.containerLeft {
+  position: fixed;
+  height: 75vh;
+  width: 15vw;
+  top:20vh;
+  background-color: black;
+  border: 1px solid red;
+}
+
+.containerGames {
+  left: 15vw;
+  position: fixed;
+  height: 75vh;
+  width: 70vw;
+  top: 20vh;
+  bottom: auto;
+  right: auto;
+  border: 1px solid red;
+}
+
+#screenGame {
+  left: auto;
+  position: fixed;
+  height: 75vh;
+  width: 70vw;
+  top: 20vh;
+  bottom: auto;
+  right: auto;
+  border: 1px solid red;
+}
+
+.containerRight {
+  position: fixed;
+  height: 75vh;
+  width: 15vw;
+  right: 0;
+  top:20vh;
+  background-color: black;
+  border: 1px solid red;
+}
+
+footer {
+  height: 5vh;
+  width: ;
+  bottom: 0;
+  background-color: black;
+  border: 1px solid red;
+}
 
 
 
 
 
+/********** Logo et nom du jeu **********/
 
+footer {
+  background-color: black;
+  --text-color: rgb(200, 198, 198);
+  color: var(--text-color);
+  bottom: 0;
+  height: 100vh;
+  width: 100vw;
+}
+
+.logo_footer {
+  display: flex;
+  justify-content: center;
+}
+
+.game_name_footer {
+  text-align: center;
+  font-size: 1em;
+  /*margin-top: 5%;*/
+}
+
+/******** Accès aux réseaux sociaux *******/
+
+.footer_social_medias {
+  display: flex;
+  justify-content: center;
+  justify-content: space-around;
+  font-size: 2em;
+  /*margin: 1em 2em;*/
+}
+
+.fa-discord,
+.fa-twitter,
+.fa-telegram {
+  color: rgb(200, 198, 198);
+}
+
+.footer-legal {
+  display: flex;
+  font-size: 0.8em; /*responsive*/
+  flex-direction: column;
+  align-items: center;
+  padding: 3px;
+}
+
+/******** Informations légales ********/
+
+@media screen and (min-width: 718px) {
+  .game_name_footer {
+    font-size: 2.2em;
+    margin-top: 2%;
+  }
+
+  .footer_social_medias {
+    font-size: 3em;
+    padding: 4vh;
+    margin: 0 4em;
+    display: flex;
+  }
+
+  .footer-legal {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 2rem;
+    font-size: 1rem;
+    margin: 0 5em;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .footer_social_medias {
+    margin: 0 6em;
+  }
+}
+
+
+
+.gameName {
+font-size: 0.5em;
+}
+
+.mainContent{
+  width: 100Vw;
+  height: 30em;
+}
+
+.containerGames {
+  width: 100vw;
+  height: 30em;
+}
+
+#screenGame {
+  background-image: url("/images/background/underwater-fantasy-preview.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 30em;
+  width: 100Vw;
+
+}
+
+footer {
+  background-color: black;
+  --text-color: rgb(200, 198, 198);
+  color: var(--text-color);
+}
+
+.logo_footer{
+  padding-top: 3em;
+}
