@@ -1,0 +1,27 @@
+* { padding: 0; margin: 0; }
+canvas { 
+    background: rgb(99, 98, 98);
+    display: block; 
+    margin: 0 auto;
+    width: 100vw;
+    height: 65vh; 
+} 
+header{
+    height: 5vh;
+    background-color: black;
+}
+footer{
+    height: 30vh;
+    width: 100%;
+    background-color: black;
+    position: fixed;
+    bottom: 0;
+    
+}
+
+
+
+
+
+
+
