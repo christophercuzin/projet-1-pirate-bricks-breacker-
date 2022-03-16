@@ -1,4 +1,4 @@
-* {
+body {
   /*font-size: 16px;*/
   padding: 0;
   margin: 0;
@@ -7,7 +7,6 @@
 header {
   position: sticky;
   height: 3rem;
-  width: 100vw;
   background-color: black;
   display: flex;
 }
@@ -36,12 +35,7 @@ header {
   align-items:center;
 }
 
-.mainContent{
-  width: 100Vw;
-}
-
 .containerGames {
-  width: 100vw;
   height: 26em;
 }
 
@@ -52,62 +46,7 @@ header {
   background-repeat: no-repeat;
   background-size: cover;
   height: 26em;
-  width: 100Vw;
-
-}
-
-/*.containerLeft {
-  position: fixed;
-  height: 75vh;
-  width: 15vw;
-  top:20vh;
-  background-color: black;
-  border: 1px solid red;
-}
-
-.containerGames {
-  left: 15vw;
-  position: fixed;
-  height: 75vh;
-  width: 70vw;
-  top: 20vh;
-  bottom: auto;
-  right: auto;
-  border: 1px solid red;
-}
-
-#screenGame {
-  left: auto;
-  position: fixed;
-  height: 75vh;
-  width: 70vw;
-  top: 20vh;
-  bottom: auto;
-  right: auto;
-  border: 1px solid red;
-}
-
-.containerRight {
-  position: fixed;
-  height: 75vh;
-  width: 15vw;
-  right: 0;
-  top:20vh;
-  background-color: black;
-  border: 1px solid red;
-}
-
-footer {
-  height: 5vh;
-  width: ;
-  bottom: 0;
-  background-color: black;
-  border: 1px solid red;
-}
-
-
-
-
+ }
 
 /********** Logo et nom du jeu **********/
 
@@ -116,8 +55,6 @@ footer {
   --text-color: rgb(200, 198, 198);
   color: var(--text-color);
   bottom: 0;
-  height: 100vh;
-  width: 100vw;
 }
 
 .logo_footer {
@@ -174,7 +111,6 @@ footer {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    height: 2rem;
     font-size: 1rem;
     margin: 0 5em;
   }
@@ -193,12 +129,10 @@ font-size: 0.5em;
 }
 
 .mainContent{
-  width: 100Vw;
   height: 30em;
 }
 
 .containerGames {
-  width: 100vw;
   height: 30em;
 }
 
@@ -207,8 +141,6 @@ font-size: 0.5em;
   background-repeat: no-repeat;
   background-size: cover;
   height: 30em;
-  width: 100Vw;
-
 }
 
 footer {
