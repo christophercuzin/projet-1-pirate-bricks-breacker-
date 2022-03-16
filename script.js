@@ -1,7 +1,7 @@
 /*recuperation de canvas et definition du contexte 2d */
 
 
-const canvas = document.getElementById("myCanvas");
+const canvas = document.getElementById("screenGame");
 const context = canvas.getContext("2d");
 
 
@@ -15,22 +15,23 @@ let dx = 2;
 let dy = -3;
 const ballRadius = 10;
 const paddleHeight = 10;
-const paddleWidth = 90;
+const paddleWidth = 100;
 let paddleX = (canvas.width-paddleWidth)/2;
 let rightPressed = false;
 let leftPressed = false;
 let score = 0;
+let lives = 3
 
 /*ici on defini les variable pour créer les brique le nombre de ligne de colonne largeur etc...
  on fait aussi en sorte qu'elle ne soit pas dessiner sur le bord du canvas avec les 2 dernier variables */
 const brickRowCount = 5;
 const brickColumnCount = 10;
-const brickWidth = 30;
+const brickWidth = 29;
 const brickHeight = 20;
 const brickPadding = 5;
-const brickOffsetTop = 30;
+const brickOffsetTop = 45;
 const brickOffsetLeft = 10;
-
+const color = "#BB473B";
 
 
 //creation du tableau et de sa boucle qui contiendra les les brique une fois créer
@@ -106,22 +107,22 @@ function collisionDetection() {
 
 // creation de la fonction de calcule du score
 function drawScore() {
-    context.font = "16px Arial";
-    context.fillStyle = "#8C1512";
-    context.fillText("Score: "+score, 8, 20);
+    context.font = "20px Arial";
+    context.fillStyle = "black";
+    context.fillText("Score: "+score, 8, 25);
 }
 
 function drawLives() {
-    context.font = "16px Arial";
-    context.fillStyle = "#8C1512";
-    context.fillText("Lives: "+lives, canvas.width-65, 20);
+    context.font = "20px Arial";
+    context.fillStyle = color;
+    context.fillText("Lives: "+lives,canvas.width-90, 20);
 }
 
 /*fonction de creation de la raquette */
 function drawPaddle() {
     context.beginPath();
     context.rect(paddleX, canvas.height-paddleHeight, paddleWidth, paddleHeight);
-    context.fillStyle = "#8C1512";
+    context.fillStyle = color;
     context.fill();
     context.closePath();
 }
@@ -139,7 +140,7 @@ function drawBricks() {
                 bricks[column][row].y = brickY;
                 context.beginPath();
                 context.rect(brickX, brickY, brickWidth, brickHeight);
-                context.fillStyle = "#8C1512";
+                context.fillStyle = color;
                 context.fill();
                 context.closePath();
             }
@@ -152,10 +153,13 @@ function drawBricks() {
 
 /*fonction de cration de la balle, choix de la forme avec ctx.arc */
 
+
+
+
 function drawBall() {
     context.beginPath();
     context.arc(x, y, ballRadius, 0, Math.PI*2 );/*x/y est la position de depart de la balle,3eme valeur le rayon, les 2 autre definisse le point de depart et le point d'arriver du dessin, la derniere n'est pas specifié il s'agit d'un booleen (true par defaut) qui indique le sens de rotation dans lequel le dessin sera effectuer (sens horaire ici avec la valeur par defaut)  */
-    context.fillStyle = "#8C1512";/*couleur de la balle */
+    context.fillStyle = color;/*couleur de la balle */
     context.fill();/*appel de la couleur */
     context.closePath();
   }
@@ -168,9 +172,7 @@ function draw() {
     drawBricks();
     collisionDetection();
     drawScore();
-    
-
-    
+    drawLives()
 
 
     x += dx;
@@ -189,21 +191,35 @@ haut et en bas mais aussi a droite et a gauche */
         if(x > paddleX && x < paddleX + paddleWidth) {
             dy = -dy;
    
-    } else {
+    } else if (lives===1) {
         alert("GAME OVER");
         document.location.reload();
         clearInterval(interval);  // obligatoire pour arreter le jeux sur chrome
+    } else if (y + dy > canvas.height-ballRadius){
+        lives--;
+        x = canvas.width/2;
+        y = canvas.height-30;
+        dx = 2;
+        dy = -2;
+        paddleX = (canvas.width-paddleWidth)/2;
+        alert("vous avez perdu une vie");
+        
+        
+
+
+        
+
     }
 }
 /*condition pour gerer l'arret de la palette */
     if(rightPressed) {
-        paddleX += 7;
+        paddleX += 5;
         if (paddleX + paddleWidth > canvas.width){
             paddleX = canvas.width - paddleWidth;
         }
     }
     else if(leftPressed) {
-        paddleX -= 7;
+        paddleX -= 5;
         if (paddleX < 0){
             paddleX = 0;
         }

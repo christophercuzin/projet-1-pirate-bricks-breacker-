@@ -1,12 +1,13 @@
 * {
   /*font-size: 16px;*/
+  box-sizing: border-box;
   padding: 0;
   margin: 0;
 }
 
 header {
   position: sticky;
-  height: 3rem;
+  height: 5vh;
   width: 100vw;
   background-color: black;
   display: flex;
@@ -21,20 +22,35 @@ header {
   color: white;
   display: flex;
   align-items: center;
-  padding-left: 1em;
+  width: 100vw;
+  justify-content: space-between;
+  
+  
 }
 
 .gameName h1 {
-  font-size: 1.5em;
+  font-size: 0.7em;
+  text-align: center;
+  width: 55vw;
+  
+  
+  
 }
 
  ul {
   list-style-type: none;
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
-  align-items:center;
-}
+  justify-content: space-around;
+  font-size: 0.6em;
+  width: 35vw;
+ }
+
+ ul > li{
+  color: aqua;
+ }
+ /*  align-items:center; */
+
 
 .mainContent{
   width: 100Vw;
@@ -116,13 +132,14 @@ footer {
   --text-color: rgb(200, 198, 198);
   color: var(--text-color);
   bottom: 0;
-  height: 100vh;
+  height: 40vh;
   width: 100vw;
 }
 
 .logo_footer {
   display: flex;
   justify-content: center;
+  height: 20vh;
 }
 
 .game_name_footer {
@@ -157,7 +174,7 @@ footer {
 
 /******** Informations légales ********/
 
-@media screen and (min-width: 718px) {
+/* @media screen and (min-width: 718px) {
   .game_name_footer {
     font-size: 2.2em;
     margin-top: 2%;
@@ -207,7 +224,7 @@ font-size: 0.5em;
   background-repeat: no-repeat;
   background-size: cover;
   height: 30em;
-  width: 100Vw;
+  width: 100vw;
 
 }
 
@@ -219,4 +236,4 @@ footer {
 
 .logo_footer{
   padding-top: 3em;
-}
+} */
