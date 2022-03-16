@@ -107,13 +107,13 @@ function collisionDetection() {
 // creation de la fonction de calcule du score
 function drawScore() {
     context.font = "16px Arial";
-    context.fillStyle = "#0095DD";
+    context.fillStyle = "#8C1512";
     context.fillText("Score: "+score, 8, 20);
 }
 
 function drawLives() {
     context.font = "16px Arial";
-    context.fillStyle = "#0095DD";
+    context.fillStyle = "#8C1512";
     context.fillText("Lives: "+lives, canvas.width-65, 20);
 }
 
@@ -121,7 +121,7 @@ function drawLives() {
 function drawPaddle() {
     context.beginPath();
     context.rect(paddleX, canvas.height-paddleHeight, paddleWidth, paddleHeight);
-    context.fillStyle = "#0095DD";
+    context.fillStyle = "#8C1512";
     context.fill();
     context.closePath();
 }
@@ -139,7 +139,7 @@ function drawBricks() {
                 bricks[column][row].y = brickY;
                 context.beginPath();
                 context.rect(brickX, brickY, brickWidth, brickHeight);
-                context.fillStyle = "#0095DD";
+                context.fillStyle = "#8C1512";
                 context.fill();
                 context.closePath();
             }
@@ -155,7 +155,7 @@ function drawBricks() {
 function drawBall() {
     context.beginPath();
     context.arc(x, y, ballRadius, 0, Math.PI*2 );/*x/y est la position de depart de la balle,3eme valeur le rayon, les 2 autre definisse le point de depart et le point d'arriver du dessin, la derniere n'est pas specifié il s'agit d'un booleen (true par defaut) qui indique le sens de rotation dans lequel le dessin sera effectuer (sens horaire ici avec la valeur par defaut)  */
-    context.fillStyle = "#0095DD";/*couleur de la balle */
+    context.fillStyle = "#8C1512";/*couleur de la balle */
     context.fill();/*appel de la couleur */
     context.closePath();
   }
