@@ -1,8 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=IM+Fell+English&display=swap");
+
 body {
   /*font-size: 16px;*/
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  font-family: "IM Fell English", serif;
 }
 
 header {
@@ -14,7 +17,7 @@ header {
 
 .logo {
   height: 90%;
-  width:auto;
+  width: auto;
 }
 
 .gameName {
@@ -23,46 +26,47 @@ header {
   align-items: center;
   width: 100vw;
   justify-content: space-between;
-  
-  
 }
 
 .gameName h1 {
-  font-size: 0.7em;
+  font-size: 0.8em;
   text-align: center;
-  width: 55vw;
-  
-  
-  
+  width: 40vw;
 }
 
- ul {
+ul {
   list-style-type: none;
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
+  width: 50em;
   font-size: 0.6em;
-  width: 35vw;
- }
+  margin-right: 5%;
+}
 
- ul > li{
-  color: aqua;
- }
- /*  align-items:center; */
+ul > li {
+  color: rgb(255, 0, 85);
+  display: flex;
+  align-items: center;
+}
 
+ul > li > a {
+  text-decoration: none;
+  color: white;
+}
+/*  align-items:center; */
 
 .containerGames {
   height: 26em;
 }
 
 #screenGame {
-  display: block; 
+  display: block;
   margin: 0 auto;
   background-image: url("/images/background/underwater-fantasy-preview.png");
   background-repeat: no-repeat;
   background-size: cover;
   height: 26em;
- }
+}
 
 /********** Logo et nom du jeu **********/
 
@@ -77,6 +81,7 @@ footer {
   display: flex;
   justify-content: center;
   height: 20vh;
+  padding-top: 2vh;
 }
 
 .game_name_footer {
@@ -84,51 +89,6 @@ footer {
   font-size: 1em;
   /*margin-top: 5%;*/
 }
-
-
-
-#game-over-notify {
-    position: fixed;
-    display: none;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: black;
-    font-size: 1.8rem;
-    color: white;
-    font-weight: 300;
-}
-.gameOverContent {
-    display: flex;
-    align-items: center;
-    margin: 50px 120px;
-    width:100%;
-}
-
-
-
-/* *************** SUCCESS *************** */
-#success-notify {
-    position: fixed;
-    display: none;
-    align-items: center;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: black;
-    font-size: 1.8rem;
-    color: white;
-    font-weight: 300;
-}
-.successContent {
-    text-align: right;
-    margin: 50px 120px;
-    width:100%;
-}
-
-*/
 
 /******** Accès aux réseaux sociaux *******/
 
@@ -161,14 +121,12 @@ footer {
     font-size: 2.2em;
     margin-top: 2%;
   }
-
   .footer_social_medias {
     font-size: 3em;
     padding: 4vh;
     margin: 0 4em;
     display: flex;
   }
-
   .footer-legal {
     display: flex;
     flex-direction: row;
@@ -177,40 +135,31 @@ footer {
     margin: 0 5em;
   }
 }
-
 @media screen and (min-width: 1024px) {
   .footer_social_medias {
     margin: 0 6em;
   }
 }
-
-
-
 .gameName {
 font-size: 0.5em;
 }
-
 .mainContent{
   height: 30em;
 }
-
 .containerGames {
   height: 30em;
 }
-
 #screenGame {
   background-image: url("/images/background/underwater-fantasy-preview.png");
   background-repeat: no-repeat;
   background-size: cover;
   height: 30em;
 }
-
 footer {
   background-color: black;
   --text-color: rgb(200, 198, 198);
   color: var(--text-color);
 }
-
 .logo_footer{
   padding-top: 3em;
 } */
