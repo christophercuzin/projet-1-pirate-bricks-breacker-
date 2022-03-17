@@ -4,6 +4,23 @@
 const canvas = document.getElementById("screenGame");
 const context = canvas.getContext("2d");
 
+/*Environnement sonore*/
+
+
+const LIFE_LOST = new Audio();
+LIFE_LOST.src = "sounds/life_lost.mp3";
+
+/*const WALL_HIT = new Audio();
+WALL_HIT.src = "sounds/wall.mp3"; */
+
+const PADDLE_HIT = new Audio();
+PADDLE_HIT.src = "sounds/paddle_hit.mp3";
+
+const WIN = new Audio();
+WIN.src = "sounds/win.mp3";
+
+const BRICK_HIT = new Audio();
+BRICK_HIT.src = "sounds/brick_hit.mp3";
 
 
 /*afection des variable necessaire a la creation et aux 
@@ -96,11 +113,16 @@ function collisionDetection() {
             let brique = bricks[column][row];
             if (brique.statusbar === 1){
                 if(x > brique.x && x < brique.x+brickWidth && y > brique.y && y < brique.y+brickHeight) {
-
+                    BRICK_HIT.play(); /*************** */
                     dy = -dy;
                     brique.statusbar = 0;
                     score += 5;
+<<<<<<< HEAD
                     if(score === brickRowCount*brickColumnCount*5) {
+=======
+                    if(score == brickRowCount*brickColumnCount*5) {
+                        WIN.play(); /*********** */
+>>>>>>> b3bdde1fb7a4cee705f600549b7d155c9494b417
                         alert("C'est gagné, Bravo!");
                         document.location.reload();
                         clearInterval(interval);
@@ -223,12 +245,14 @@ haut et en bas mais aussi a droite et a gauche */
         dy = -dy;
     }  if (y + dy > canvas.height-ballRadius) {
         if(x > paddleX && x < paddleX + paddleWidth) {
+            PADDLE_HIT.play();
             dy = -dy;
    
     } else if (lives===1) {
         alert("GAME OVER");
         document.location.reload();
         clearInterval(interval);  // obligatoire pour arreter le jeux sur chrome
+<<<<<<< HEAD
     }  
     }
 }
@@ -251,6 +275,32 @@ function draw() {
 
 
    
+=======
+    } else if (y + dy > canvas.height-ballRadius){
+        lives--;
+        x = canvas.width/2;
+        y = canvas.height-30;
+        dx = 2;
+        dy = -2;
+        paddleX = (canvas.width-paddleWidth)/2;
+        LIFE_LOST.play(); 
+        alert("vous avez perdu une vie");
+    }
+}
+/*condition pour gerer l'arret de la palette */
+    if(rightPressed) {
+        paddleX += 5;
+        if (paddleX + paddleWidth > canvas.width){
+            paddleX = canvas.width - paddleWidth;
+        }
+    }
+    else if(leftPressed) {
+        paddleX -= 5;
+        if (paddleX < 0){
+            paddleX = 0;
+        }
+    }
+>>>>>>> b3bdde1fb7a4cee705f600549b7d155c9494b417
     
     
 }
@@ -260,5 +310,3 @@ function draw() {
 const interval = setInterval(draw, 10);
  
   
-
-
