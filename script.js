@@ -117,12 +117,8 @@ function collisionDetection() {
                     dy = -dy;
                     brique.statusbar = 0;
                     score += 5;
-<<<<<<< HEAD
-                    if(score === brickRowCount*brickColumnCount*5) {
-=======
                     if(score == brickRowCount*brickColumnCount*5) {
                         WIN.play(); /*********** */
->>>>>>> b3bdde1fb7a4cee705f600549b7d155c9494b417
                         alert("C'est gagné, Bravo!");
                         document.location.reload();
                         clearInterval(interval);
@@ -222,6 +218,7 @@ function drawBall() {
   function lostLife(){
     if (y + dy > canvas.height-ballRadius){
         lives--;
+        LIFE_LOST.play();
         start = false
         startGame();
         paddleX = (canvas.width-paddleWidth)/2;
@@ -235,12 +232,12 @@ function drawBall() {
     y += dy;
 /*gestion des collision */
 /*ici on verifie si le deplacement + la position de la balle depasse la largeur du canvas
- alors on reafecte la valeur pour l'inverser */
+ alors on reafecte la valeur pour l'inverser et gerer la colision a droite et a gauche  */
     if(x + dx > canvas.width-ballRadius || x + dx < ballRadius) {
         dx = -dx;
     }
 /*idem ici mais pour la hauteur ce qui nous permet de gerer la colision en 
-haut et en bas mais aussi a droite et a gauche */ 
+haut et en bas*/ 
     if(y + dy < ballRadius) {
         dy = -dy;
     }  if (y + dy > canvas.height-ballRadius) {
@@ -252,7 +249,6 @@ haut et en bas mais aussi a droite et a gauche */
         alert("GAME OVER");
         document.location.reload();
         clearInterval(interval);  // obligatoire pour arreter le jeux sur chrome
-<<<<<<< HEAD
     }  
     }
 }
@@ -275,32 +271,6 @@ function draw() {
 
 
    
-=======
-    } else if (y + dy > canvas.height-ballRadius){
-        lives--;
-        x = canvas.width/2;
-        y = canvas.height-30;
-        dx = 2;
-        dy = -2;
-        paddleX = (canvas.width-paddleWidth)/2;
-        LIFE_LOST.play(); 
-        alert("vous avez perdu une vie");
-    }
-}
-/*condition pour gerer l'arret de la palette */
-    if(rightPressed) {
-        paddleX += 5;
-        if (paddleX + paddleWidth > canvas.width){
-            paddleX = canvas.width - paddleWidth;
-        }
-    }
-    else if(leftPressed) {
-        paddleX -= 5;
-        if (paddleX < 0){
-            paddleX = 0;
-        }
-    }
->>>>>>> b3bdde1fb7a4cee705f600549b7d155c9494b417
     
     
 }

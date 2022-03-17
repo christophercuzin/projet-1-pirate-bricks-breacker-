@@ -140,7 +140,7 @@ footer {
   display: flex;
   justify-content: center;
   justify-content: space-around;
-  font-size: 1.7em;
+  font-size: 2em;
   /*margin: 1em 2em;*/
 }
 
@@ -157,6 +157,7 @@ footer {
   align-items: center;
   justify-content: space-between;
   padding: 3px;
+  height: 88px;
 }
 .footer-legal1{
   display: flex;
@@ -164,9 +165,7 @@ footer {
   justify-content: space-between;
   width: 100%;
 }
-.footer-legal>div{
-  height: 3.3em;
-}
+
 
 
 
