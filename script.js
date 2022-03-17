@@ -221,7 +221,7 @@ function drawBall() {
 haut et en bas mais aussi a droite et a gauche */ 
     if(y + dy < ballRadius) {
         dy = -dy;
-    } else if (y + dy > canvas.height-ballRadius) {
+    }  if (y + dy > canvas.height-ballRadius) {
         if(x > paddleX && x < paddleX + paddleWidth) {
             dy = -dy;
    
