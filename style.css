@@ -70,23 +70,28 @@ header {
  }
 
 /********** Logo et nom du jeu **********/
-
+.footer{
+  height: 100%;
+}
 footer {
   background-color: black;
   --text-color: rgb(200, 198, 198);
-  color: var(--text-color);
-  bottom: 0;
+  color: var(--text-color); 
+ 
+  
+  
 }
 
 .logo_footer {
   display: flex;
   justify-content: center;
-  height: 15vh;
+  height: 16vh;
 }
+
 
 .game_name_footer {
   text-align: center;
-  font-size: 1em;
+  font-size: 1.5em;
   /*margin-top: 5%;*/
 }
 
@@ -139,16 +144,15 @@ footer {
 
 .footer_social_medias {
   display: flex;
-  justify-content: center;
-  justify-content: space-around;
-  font-size: 2em;
-  /*margin: 1em 2em;*/
-}
+  }
 
 .fa-discord,
 .fa-twitter,
 .fa-telegram {
   color: rgb(200, 198, 198);
+  width: 32%;
+  text-align: center;
+  font-size: 1em;
 }
 
 .footer-legal {
@@ -157,8 +161,7 @@ footer {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 3px;
-  height: 88px;
+ 
 }
 .footer-legal1{
   display: flex;
@@ -179,7 +182,7 @@ footer {
  @media screen and (min-width: 768px) {
 
   .gameName > h1{
-    font-size: 2em;
+    font-size: 1.5em;
     text-align: right;
     padding-right: 5%;
   }

@@ -43,11 +43,11 @@ let lives = 3
 /*ici on defini les variable pour créer les brique le nombre de ligne de colonne largeur etc...
  on fait aussi en sorte qu'elle ne soit pas dessiner sur le bord du canvas avec les 2 dernier variables */
 const brickRowCount = 8;
-const brickColumnCount = 17;
-const brickWidth = 40;
+const brickColumnCount = 20;
+const brickWidth = 35;
 const brickHeight = 30;
 const brickPadding = 3;
-const brickOffsetTop = 45;
+const brickOffsetTop = 65;
 const brickOffsetLeft = 20;
 const color = "#BB473B";
 
