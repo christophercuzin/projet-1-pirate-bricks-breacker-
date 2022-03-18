@@ -19,6 +19,9 @@ header {
   height: 90%;
   width: auto;
 }
+.logoPrincipal{
+  width: 20vw;
+}
 
 .gameName {
   color: white;
@@ -26,28 +29,32 @@ header {
   align-items: center;
   width: 100vw;
   justify-content: space-between;
+  
+  
+  
 }
 
 .gameName h1 {
   font-size: 0.8em;
   text-align: center;
-  width: 40vw;
+  width: 100%;
+  
+  
+  
 }
 
 ul {
   list-style-type: none;
   display: flex;
-  justify-content: space-between;
-  width: 50em;
-  font-size: 0.6em;
-  margin-right: 5%;
-}
-
-ul > li {
-  color: rgb(255, 0, 85);
-  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   align-items: center;
-}
+  font-size: 0.6em;
+  padding: 0;
+  width: 30vw;
+ }
+
+ /*  align-items:center; */
 
 ul > li > a {
   text-decoration: none;
@@ -65,28 +72,34 @@ ul > li > a {
   background-image: url("/images/background/underwater-fantasy-preview.png");
   background-repeat: no-repeat;
   background-size: cover;
-  height: 26em;
-}
+  width: 100%;
+  height: 100%;
+  
+ }
 
 /********** Logo et nom du jeu **********/
-
+.footer{
+  height: 100%;
+}
 footer {
   background-color: black;
   --text-color: rgb(200, 198, 198);
-  color: var(--text-color);
-  bottom: 0;
+  color: var(--text-color); 
+ 
+  
+  
 }
 
 .logo_footer {
   display: flex;
   justify-content: center;
-  height: 20vh;
-  padding-top: 2vh;
+  height: 16vh;
 }
+
 
 .game_name_footer {
   text-align: center;
-  font-size: 1em;
+  font-size: 1.5em;
   /*margin-top: 5%;*/
 }
 
@@ -94,29 +107,57 @@ footer {
 
 .footer_social_medias {
   display: flex;
-  justify-content: center;
-  justify-content: space-around;
-  font-size: 2em;
-  /*margin: 1em 2em;*/
-}
+  }
 
 .fa-discord,
 .fa-twitter,
 .fa-telegram {
   color: rgb(200, 198, 198);
+  width: 32%;
+  text-align: center;
+  font-size: 1em;
 }
 
 .footer-legal {
   display: flex;
-  font-size: 0.8em; /*responsive*/
+  font-size: 0.7em; /*responsive*/
   flex-direction: column;
   align-items: center;
-  padding: 3px;
+  justify-content: space-between;
+ 
+}
+.footer-legal1{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+
+
+
+.footer-legal>div{
+  text-align: center;
 }
 
 /******** Informations légales ********/
 
-/* @media screen and (min-width: 718px) {
+ @media screen and (min-width: 768px) {
+
+  .gameName > h1{
+    font-size: 1.5em;
+    text-align: right;
+    padding-right: 5%;
+  }
+
+  ul{
+    flex-direction: row;
+    font-size: 0.8em;
+    width: 70vw;
+    
+    
+  }
+
   .game_name_footer {
     font-size: 2.2em;
     margin-top: 2%;
@@ -134,16 +175,20 @@ footer {
     font-size: 1rem;
     margin: 0 5em;
   }
-}
+} 
+
 @media screen and (min-width: 1024px) {
   .footer_social_medias {
     margin: 0 6em;
   }
-}
+
+
+
+
 .gameName {
 font-size: 0.5em;
 }
-.mainContent{
+.mainContent{  width: 40vw;
   height: 30em;
 }
 .containerGames {
@@ -154,6 +199,7 @@ font-size: 0.5em;
   background-repeat: no-repeat;
   background-size: cover;
   height: 30em;
+  width: 50%;
 }
 footer {
   background-color: black;
@@ -162,4 +208,6 @@ footer {
 }
 .logo_footer{
   padding-top: 3em;
-} */
+  } 
+}
+ 

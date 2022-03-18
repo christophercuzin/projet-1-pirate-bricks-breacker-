@@ -30,26 +30,73 @@ let x = canvas.width/2;
 let y = canvas.height -30;
 let dx = 2;
 let dy = -3;
-const ballRadius = 10;
-const paddleHeight = 10;
-const paddleWidth = 100;
+let start = false;
+const ballRadius = 15;
+const paddleHeight = 15;
+const paddleWidth = 110;
 let paddleX = (canvas.width-paddleWidth)/2;
 let rightPressed = false;
 let leftPressed = false;
 let score = 0;
-let lives = 3
+let lives = 3 
 
 /*ici on defini les variable pour créer les brique le nombre de ligne de colonne largeur etc...
  on fait aussi en sorte qu'elle ne soit pas dessiner sur le bord du canvas avec les 2 dernier variables */
-const brickRowCount = 5;
-const brickColumnCount = 10;
-const brickWidth = 29;
-const brickHeight = 20;
-const brickPadding = 5;
-const brickOffsetTop = 45;
-const brickOffsetLeft = 10;
+const brickRowCount = 8;
+const brickColumnCount = 20;
+const brickWidth = 35;
+const brickHeight = 30;
+const brickPadding = 3;
+const brickOffsetTop = 65;
+const brickOffsetLeft = 20;
 const color = "#BB473B";
 
+
+
+
+
+/*evenement d'ecoute pour l'appui sur les fleche droite ou gauche pour gerer le deplacement de la palette */
+document.addEventListener("keydown", keyDownHandler, false);
+document.addEventListener("keyup", keyUpHandler, false);
+document.addEventListener("mousemove", mouseMoveHandler, false);
+/*fonction qui verifie lorsque les touche droite et gauche sont enfonçé et relaché 
+et qui modifie les variable touche présser qui sont initialisé a false et passe a true lorsqu'elle le sont
+* le parametre e represente l'evenement (appui)  */
+function keyDownHandler(events) {
+    if(events.keyCode === 13){
+        start = true;
+    }
+    if(events.keyCode === 39) {
+        rightPressed = true;
+    }
+    else if(events.keyCode === 37) {
+        leftPressed = true;
+    }
+}
+
+function keyUpHandler(events) {
+    
+    if(events.keyCode === 39) {
+        rightPressed = false;
+    }
+    else if(events.keyCode === 37) {
+        leftPressed = false;
+    }
+}
+
+
+
+// fonction de detectin de la position de la souris pour deplacer la raquette avec la souris
+function mouseMoveHandler(events) {
+    let relativeX = events.clientX - canvas.offsetLeft;
+    if(relativeX > 0 && relativeX < canvas.width) {
+        paddleX = relativeX - paddleWidth/2;
+    } if (paddleX + paddleWidth > canvas.width){
+        paddleX = canvas.width - paddleWidth;
+    } if (paddleX < 0){
+        paddleX = 0;
+    } 
+}
 
 //creation du tableau et de sa boucle qui contiendra les les brique une fois créer
 const bricks = [];
@@ -61,55 +108,16 @@ for(let column=0; column<brickColumnCount; column++) {
 }
 
 
-/*evenement d'ecoute pour l'appui sur les fleche droite ou gauche pour gerer le deplacement de la palette */
-document.addEventListener("keydown", keyDownHandler, false);
-document.addEventListener("keyup", keyUpHandler, false);
-document.addEventListener("mousemove", mouseMoveHandler, false);
-
-/*fonction qui verifie lorsque les touche droite et gauche sont enfonçé et relaché 
-et qui modifie les variable touche présser qui sont initialisé a false et passe a true lorsqu'elle le sont
-* le parametre e represente l'evenement (appui)  */
-function keyDownHandler(events) {
-    if(events.key == "Right" || events.key == "ArrowRight") {
-        rightPressed = true;
-    }
-    else if(events.key == "Left" || events.key == "ArrowLeft") {
-        leftPressed = true;
-    }
-}
-
-function keyUpHandler(events) {
-    if(events.key == "Right" || events.key == "ArrowRight") {
-        rightPressed = false;
-    }
-    else if(events.key == "Left" || events.key == "ArrowLeft") {
-        leftPressed = false;
-    }
-}
-
-// fonction de detectin de la position de la souris pour deplacer la raquette avec la souris
-function mouseMoveHandler(events) {
-    let relativeX = events.clientX - canvas.offsetLeft;
-    if(relativeX > 0 && relativeX < canvas.width) {
-        paddleX = relativeX - paddleWidth/2;
-    } if (paddleX + paddleWidth > canvas.width){
-        paddleX = canvas.width - paddleWidth;
-    } if (paddleX < 0){
-        paddleX = 0;
-    }
-}
-
-
 /*fonction pour detecter la colision de la balle avec les brique en fonction de la position de chacune d'entre elles */
 function collisionDetection() {
     for(let column=0; column<brickColumnCount; column++) {
         for(let row=0; row<brickRowCount; row++) {
-            let brique = bricks[column][row];
-            if (brique.statusbar === 1){
-                if(x > brique.x && x < brique.x+brickWidth && y > brique.y && y < brique.y+brickHeight) {
+            let brick = bricks[column][row];
+            if (brick.statusbar === 1){
+                if(x > brick.x && x < brick.x+brickWidth && y > brick.y && y < brick.y+brickHeight) {
                     BRICK_HIT.play(); /*************** */
                     dy = -dy;
-                    brique.statusbar = 0;
+                    brick.statusbar = 0;
                     score += 5;
                     if(score == brickRowCount*brickColumnCount*5) {
                         WIN.play(); /*********** */
@@ -125,14 +133,14 @@ function collisionDetection() {
 
 // creation de la fonction de calcule du score
 function drawScore() {
-    context.font = "20px Arial";
+    context.font = "24px Arial";
     context.fillStyle = "black";
     context.fillText("Score: "+score, 8, 25);
 }
 
 function drawLives() {
-    context.font = "20px Arial";
-    context.fillStyle = color;
+    context.font = "24px Arial";
+    context.fillStyle ="black";
     context.fillText("Lives: "+lives,canvas.width-90, 20);
 }
 
@@ -143,6 +151,22 @@ function drawPaddle() {
     context.fillStyle = color;
     context.fill();
     context.closePath();
+}
+
+/*fonction pour gerer le deplaçement et l'arret de la palette et la colision avec le mur*/
+function paddleMove(){
+    if(rightPressed) {
+        paddleX += 8;
+        if (paddleX + paddleWidth > canvas.width){
+            paddleX = canvas.width - paddleWidth;
+        }
+    }
+    else if(leftPressed) {
+        paddleX -= 8;
+        if (paddleX < 0){
+            paddleX = 0;
+        }
+    }
 }
 
 /*fonction pour créer et definir l'emplacement de creation des briques en fonction des variable defini 
@@ -181,31 +205,44 @@ function drawBall() {
     context.fill();/*appel de la couleur */
     context.closePath();
   }
+//fonction pour lancé la balle avec la touche espace
+  function startGame(){
+      if (start){
+          x += dx;
+          y += dy;
+      } else {
+          x = paddleX + 37;
+          y = canvas.height - 25;
+      }
 
+  }
+//fonction pour decrementé les vie et renitialisé la balle et le paddle
+  function lostLife(){
+    if (y + dy > canvas.height-ballRadius){
+        lives--;
+        LIFE_LOST.play();
+        start = false
+        startGame();
+        paddleX = (canvas.width-paddleWidth)/2;
+        alert("vous avez perdu une vie");
+        
+        }
+  }
 
-function draw() {
-    context.clearRect(0, 0, canvas.width, canvas.height);
-    drawBall();
-    drawPaddle();
-    drawBricks();
-    collisionDetection();
-    drawScore();
-    drawLives()
-
-
+  function gameOver(){
     x += dx;
     y += dy;
 /*gestion des collision */
 /*ici on verifie si le deplacement + la position de la balle depasse la largeur du canvas
- alors on reafecte la valeur pour l'inverser */
+ alors on reafecte la valeur pour l'inverser et gerer la colision a droite et a gauche  */
     if(x + dx > canvas.width-ballRadius || x + dx < ballRadius) {
         dx = -dx;
     }
 /*idem ici mais pour la hauteur ce qui nous permet de gerer la colision en 
-haut et en bas mais aussi a droite et a gauche */ 
+haut et en bas*/ 
     if(y + dy < ballRadius) {
         dy = -dy;
-    } else if (y + dy > canvas.height-ballRadius) {
+    }  if (y + dy > canvas.height-ballRadius) {
         if(x > paddleX && x < paddleX + paddleWidth) {
             PADDLE_HIT.play();
             dy = -dy;
@@ -214,36 +251,34 @@ haut et en bas mais aussi a droite et a gauche */
         alert("GAME OVER");
         document.location.reload();
         clearInterval(interval);  // obligatoire pour arreter le jeux sur chrome
-    } else if (y + dy > canvas.height-ballRadius){
-        lives--;
-        x = canvas.width/2;
-        y = canvas.height-30;
-        dx = 2;
-        dy = -2;
-        paddleX = (canvas.width-paddleWidth)/2;
-        LIFE_LOST.play(); 
-        alert("vous avez perdu une vie");
+    }  
     }
 }
-/*condition pour gerer l'arret de la palette */
-    if(rightPressed) {
-        paddleX += 5;
-        if (paddleX + paddleWidth > canvas.width){
-            paddleX = canvas.width - paddleWidth;
-        }
-    }
-    else if(leftPressed) {
-        paddleX -= 5;
-        if (paddleX < 0){
-            paddleX = 0;
-        }
-    }
+
+function draw() {
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    drawBall();
+    drawPaddle();
+    drawBricks();
+    collisionDetection();
+    paddleMove();
+    startGame();
+    drawScore();
+    drawLives()
+    lostLife()
+    gameOver()
+    
+
+
+
+
+   
     
     
 }
 
 /*fonction qui appel la fonction draw créer plus haut avec un intervalle regulier (ici 10ms)
  pour gerer les deplacement de la balle */
-const interval = setInterval(draw, 10);
+const interval = setInterval(draw, 12);
  
   
